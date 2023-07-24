@@ -31,13 +31,11 @@ const Posts = () => {
 
   console.log(posts);
 
-
-
   return (
     <>
 
       <div>
-        {
+        { posts ?
           posts.map(post => (
             <div>
               <h1>{post.message}</h1>
@@ -45,6 +43,8 @@ const Posts = () => {
             </div>
 
           ))
+          :
+          <span>Loading</span>
         }
       </div>
 
