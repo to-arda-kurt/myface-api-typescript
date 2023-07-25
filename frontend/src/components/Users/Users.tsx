@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 
 
-const Posts = () => {
+const Users = () => {
 
     interface UserPostModel {
         id: number;
@@ -58,4 +58,4 @@ const Posts = () => {
   )
 }
 
-export default Posts;
+export default Users;

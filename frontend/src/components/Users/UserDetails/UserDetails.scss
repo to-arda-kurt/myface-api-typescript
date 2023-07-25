@@ -1,0 +1,25 @@
+
+.user {
+    display: flex;
+    flex-flow: row wrap;
+
+    &-post {
+            background-color: #0f0112;
+            width: 30vw;
+            margin: 12px ;
+
+            &_image {
+                width: 100%;
+                height: 50%;
+                object-fit: cover;
+            }
+
+            &-details {
+                padding: 24px;
+            }
+
+        }
+}
+
+
+

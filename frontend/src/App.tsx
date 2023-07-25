@@ -1,4 +1,4 @@
-import './App.css'
+import './App.scss'
 import Posts from './components/Posts/Posts'
 import Users from './components/Users/Users'
 
@@ -14,11 +14,9 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" >
-            <Route index element={<Posts />} />
+            <Route path='/posts' element={<Posts />} />
             <Route path='/users' element={<Users />} />
             <Route path='/users/:userId' element={<UserDetails />} />
-          </Route>
         </Routes>
       </BrowserRouter>
     
