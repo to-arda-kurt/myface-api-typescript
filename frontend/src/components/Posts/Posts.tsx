@@ -9,6 +9,7 @@ const Posts = () => {
     username: string;
     email: string;
   }
+
   interface Post {
     id: number;
     message: string;
@@ -19,22 +20,31 @@ const Posts = () => {
     dislikedBy: PostUserModel[];
   }
 
+  const nextPage = () => {
+    if(page !== 10) 
+        setPage(page + 1)
+  }
+  const prevPage = () => {
+      if(page !== 1) 
+          setPage(page - 1)
+  }
+
   const [posts, setPosts] = useState<Post[]>([])
 
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10)
 
   useEffect(() => {
-    fetch(`http://localhost:3001/posts?${page}&${pageSize}`).then(response => response.json()).then(data => setPosts(data.results));
+    fetch(`http://localhost:3001/posts?page=${page}`).then(response => response.json()).then(data => setPosts(data.results));
 
-  }, [])
-
-  console.log(posts);
+  }, [nextPage, prevPage])
 
   return (
     <>  
 
-    
+      <div>
+        <p onClick={() => prevPage()}>Previous</p>
+        <p onClick={() => nextPage()}>Next</p>
+      </div>
 
       <div>
         { posts ?

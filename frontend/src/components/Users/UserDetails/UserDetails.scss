@@ -1,7 +1,8 @@
 
-.user {
+.user-posts {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
 
     &-post {
             background-color: #0f0112;
@@ -16,6 +17,25 @@
 
             &-details {
                 padding: 24px;
+
+                &_username {
+                        line-height: 32px;
+                        font-size: 24px;
+                        font-weight: 600;
+                    }
+
+                &_date {
+                    line-height: 20px;
+                    font-size: 12px;
+                    font-weight: 300;
+                }
+
+                &_message {
+                    margin-top: 24px;
+                    line-height: 24px;
+                    font-size: 16px;
+                    font-weight: 400;
+                }
             }
 
         }
