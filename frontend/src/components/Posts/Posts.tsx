@@ -43,8 +43,8 @@ const Posts = () => {
             </div>
 
           ))
-          :
-          <span>Loading</span>
+          : 
+          <p>Loading...</p>
         }
       </div>
 
