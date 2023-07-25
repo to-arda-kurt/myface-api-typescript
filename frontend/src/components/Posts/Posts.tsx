@@ -32,7 +32,9 @@ const Posts = () => {
   console.log(posts);
 
   return (
-    <>
+    <>  
+
+    
 
       <div>
         { posts ?
@@ -41,7 +43,6 @@ const Posts = () => {
               <h1>{post.message}</h1>
               <img src={post.imageUrl} alt="" />
             </div>
-
           ))
           : 
           <p>Loading...</p>
