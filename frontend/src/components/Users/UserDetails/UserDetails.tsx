@@ -21,7 +21,7 @@ interface UserModel {
   posts: UserPostModel[];
   likes: UserPostModel[];
   dislikes: UserPostModel[];
-  }
+}
 
 
 const UserDetails = () => {
@@ -36,49 +36,56 @@ const UserDetails = () => {
 
   return (
     <>
+    <div className="user-page-wrapper">
       <div>UserDetails</div>
-      {user !== undefined && 
+      {user !== undefined &&
         <>
-          <div>
-            <p>{user.username}</p>
-            <p>{user.name}</p>
-            <p>{user.email}</p>
+          <div className="user-header">
+            <img className="user-header_cover" src={user.coverImageUrl} alt="Cover Image" />
+            <div className="user-header_details">
+              <img className="user-header_details_profile" src={user.profileImageUrl} alt="Profile Image"  />
+              <div className="user-header_details_texts">
+                <p>{user.username}</p>
+                <p>{user.name}</p>
+                <p>{user.email}</p>
+              </div>
+            </div>
           </div>
 
           <div>
             <h1>{user.username}'s Posts</h1>
             <div className="user-posts">
-              { user.posts 
-              ? user.posts.map(post => (
-              <div className="user-posts-post">
-                <img className="user-posts-post_image" src={post.imageUrl} alt="" />
-                <div className="user-posts-post-details">
-                  <p className="user-posts-post-details_username">{user.username}</p>
-                  <p className="user-posts-post-details_date">{post.createdAt}</p>
-                  <p className="user-posts-post-details_message">{post.message}</p>
-                </div>
-              </div>
-              ))
-              :<p>No posts yet</p>
-            }
+              {user.posts
+                ? user.posts.map(post => (
+                  <div className="user-posts-post">
+                    <img className="user-posts-post_image" src={post.imageUrl} alt="" />
+                    <div className="user-posts-post-details">
+                      <p className="user-posts-post-details_username">{user.username}</p>
+                      <p className="user-posts-post-details_date">{post.createdAt}</p>
+                      <p className="user-posts-post-details_message">{post.message}</p>
+                    </div>
+                  </div>
+                ))
+                : <p>No posts yet</p>
+              }
             </div>
           </div>
 
           <div>
             <h1>{user.username}'s Liked Posts</h1>
             <div className="user-posts">
-              { user.likes 
-              ? user.likes.map(like => (
-              <div className="user-posts-post">
-                <img className="user-posts-post_image" src={like.imageUrl} alt="" />
-                <div className="user-posts-post-details">
-                  <p className="user-posts-post-details_username">{user.username}</p>
-                  <p className="user-posts-post-details_date">{like.createdAt}</p>
-                  <p className="user-posts-post-details_message">{like.message}</p>
-                </div>
-              </div>
-              ))
-              :<p>No liked posts yet</p>
+              {user.likes
+                ? user.likes.map(like => (
+                  <div className="user-posts-post">
+                    <img className="user-posts-post_image" src={like.imageUrl} alt="" />
+                    <div className="user-posts-post-details">
+                      <p className="user-posts-post-details_username">{user.username}</p>
+                      <p className="user-posts-post-details_date">{like.createdAt}</p>
+                      <p className="user-posts-post-details_message">{like.message}</p>
+                    </div>
+                  </div>
+                ))
+                : <p>No liked posts yet</p>
               }
             </div>
           </div>
@@ -86,24 +93,24 @@ const UserDetails = () => {
           <div>
             <h1>{user.username}'s Disliked Posts</h1>
             <div className="user-posts">
-              { user.dislikes 
-              ? user.dislikes.map(dislike => (
-              <div className="user-posts-post">
-                  <img className="user-posts-post_image" src={dislike.imageUrl} alt="" />
-                  <div className="user-posts-post-details">
-                    <p className="user-posts-post-details_username">{user.username}</p>
-                    <p className="user-posts-post-details_date">{dislike.createdAt}</p>
-                    <p className="user-posts-post-details_message">{dislike.message}</p>
+              {user.dislikes
+                ? user.dislikes.map(dislike => (
+                  <div className="user-posts-post">
+                    <img className="user-posts-post_image" src={dislike.imageUrl} alt="" />
+                    <div className="user-posts-post-details">
+                      <p className="user-posts-post-details_username">{user.username}</p>
+                      <p className="user-posts-post-details_date">{dislike.createdAt}</p>
+                      <p className="user-posts-post-details_message">{dislike.message}</p>
+                    </div>
                   </div>
-                </div>
-              ))
-              :<p>No disliked posts yet</p>
+                ))
+                : <p>No disliked posts yet</p>
               }
             </div>
           </div>
         </>
       }
-
+</div>
     </>
   )
 }

@@ -1,8 +1,12 @@
+.user-page-wrapper{
+    max-width: 80vw;
+}
 
 .user-posts {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+   
 
     &-post {
             background-color: #0f0112;
@@ -42,4 +46,47 @@
 }
 
 
+.user-header{
 
+    position: relative;
+    height: 25vh;
+    margin-bottom: 8vh;
+
+
+
+
+    &_cover{
+        object-fit: cover;
+        height: 25vh;
+        width: 100vw;
+        
+    }
+
+    &_details{
+        position: absolute;
+        top: calc(25vh - 75px);
+        left: 0;
+        margin-left: 5vw;
+
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+
+        &_profile{
+            border-radius: 100%;
+            border: 5px solid #dcdcdc;
+            height: 150px;
+            width: 150px;
+        }
+
+        &_texts{
+
+        }
+
+    }
+
+
+
+}
