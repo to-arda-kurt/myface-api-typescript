@@ -1,0 +1,82 @@
+@use "../../variables.scss" as *;
+
+.Navbar {
+    display: flex;
+    align-items: baseline;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: $background-color-darker;
+    color: $text-color;
+
+    &__heading {
+        margin: 0;
+        margin-right: 1rem;
+    }
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    &__links {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            margin-right: 1rem;
+        }
+    }
+
+    &__link {
+        color: $text-color;
+        text-decoration: none;
+
+        &--active {
+            font-weight: bold;
+        }
+    }
+
+    &__toggler {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .Navbar {
+        &__content {
+            justify-content: end;
+        }
+
+        &__links {
+            display: none;
+        }
+
+        &__toggler {
+            display: block;
+            margin-left: auto;
+        }
+
+        &--expanded {
+            .Navbar__content {
+                display: block;
+                text-align: right;
+            }
+
+            .Navbar__links {
+                display: block;
+
+                li {
+                    margin-top: 0.5rem;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

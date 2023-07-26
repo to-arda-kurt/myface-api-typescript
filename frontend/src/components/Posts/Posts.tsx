@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-
-
-const Posts = () => {
+import  { PostInteractions }  from "../Interactions/Interactions"
+import Pagination from "../Pagination/Pagination"
+import "../Users/UserDetails/UserDetails.scss"
 
   interface PostUserModel {
     id: number;
@@ -20,14 +20,9 @@ const Posts = () => {
     dislikedBy: PostUserModel[];
   }
 
-  const nextPage = () => {
-    if(page !== 10) 
-        setPage(page + 1)
-  }
-  const prevPage = () => {
-      if(page !== 1) 
-          setPage(page - 1)
-  }
+  
+
+const Posts = () => {
 
   const [posts, setPosts] = useState<Post[]>([])
 
@@ -41,17 +36,19 @@ const Posts = () => {
   return (
     <>  
 
-      <div>
-        <p onClick={() => prevPage()}>Previous</p>
-        <p onClick={() => nextPage()}>Next</p>
-      </div>
+      <Pagination pageNumber={ page } setPageNumber={ setPage }/>
 
-      <div>
+      <div className="user-posts">
         { posts ?
           posts.map(post => (
-            <div>
-              <h1>{post.message}</h1>
-              <img src={post.imageUrl} alt="" />
+            <div className="user-posts-post" key={post.id}>
+                <img className="user-posts-post_image" src={post.imageUrl} alt="" />
+                <div className="user-posts-post-details">
+                  <p className="user-posts-post-details_username">{post.postedBy.username}</p>
+                  <p className="user-posts-post-details_date">{post.createdAt}</p>
+                  <p className="user-posts-post-details_message">{post.message}</p>
+                  <PostInteractions postId={post.id}/>
+                </div>
             </div>
           ))
           : 
