@@ -1,17 +1,20 @@
 .user-page-wrapper{
-    max-width: 80vw;
+    max-width: 70vw;
+    margin: 0 auto;
 }
 
+
+
 .user-posts {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+
    
 
     &-post {
             background-color: #0f0112;
-            width: 30vw;
-            margin: 12px ;
 
             &_image {
                 width: 100%;
@@ -49,24 +52,26 @@
 .user-header{
 
     position: relative;
-    height: 25vh;
-    margin-bottom: 8vh;
-
-
-
+    height: 500px;
+    margin-bottom: 50px;
+    overflow: hidden;
 
     &_cover{
         object-fit: cover;
-        height: 25vh;
+        height: 30vh;
         width: 100vw;
         
     }
 
     &_details{
         position: absolute;
-        top: calc(25vh - 75px);
+        top: calc(30vh - 75px);
         left: 0;
         margin-left: 5vw;
+        width: 100vw;
+        background-color: #2A2B2Caa;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px;
 
 
         display: flex;
@@ -82,7 +87,7 @@
         }
 
         &_texts{
-
+            margin-left: 24px;
         }
 
     }

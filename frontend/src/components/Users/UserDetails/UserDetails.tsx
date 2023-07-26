@@ -53,7 +53,7 @@ const UserDetails = () => {
           </div>
 
           <div>
-            <h1>{user.username}'s Posts</h1>
+            <h1 className="title">{user.username}'s Posts</h1>
             <div className="user-posts">
               {user.posts
                 ? user.posts.map(post => (

@@ -1,4 +1,4 @@
-import './App.scss'
+import './root.scss'
 import Posts from './components/Posts/Posts'
 import Users from './components/Users/Users'
 
