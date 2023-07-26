@@ -37,7 +37,6 @@ const UserDetails = () => {
   return (
     <>
     <div className="user-page-wrapper">
-      <div>UserDetails</div>
       {user !== undefined &&
         <>
           <div className="user-header">

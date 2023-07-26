@@ -4,6 +4,7 @@ import Users from './components/Users/Users'
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import UserDetails from './components/Users/UserDetails/UserDetails';
+import CreateUser from './components/Users/CreateUser/CreateUser';
 
 
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
             <Route path='/posts' element={<Posts />} />
             <Route path='/users' element={<Users />} />
+            <Route path='/create-user' element={<CreateUser />} />
             <Route path='/users/:userId' element={<UserDetails />} />
         </Routes>
       </BrowserRouter>

@@ -36,7 +36,7 @@ const Posts = () => {
   useEffect(() => {
     fetch(`http://localhost:3001/posts?page=${page}`).then(response => response.json()).then(data => setPosts(data.results));
 
-  }, [nextPage, prevPage])
+  }, [page])
 
   return (
     <>  
