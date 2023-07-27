@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import './Navbar.scss'
 
 function Navbar() {
@@ -7,7 +7,7 @@ function Navbar() {
 
   return (
     <nav className={`Navbar ${navbarExpanded ? "Navbar--expanded" : ""}`}>
-      <h3 className="Navbar__heading">MyFace</h3>
+      <NavLink to='/'><h3 className="Navbar__heading">MyFace</h3></NavLink>
       <div className="Navbar__content">
         <button className="Navbar__toggler" onClick={() => setNavbarExpanded(!navbarExpanded)}>Expand</button>
         <ul className="Navbar__links">

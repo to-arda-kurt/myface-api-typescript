@@ -10,11 +10,17 @@
     padding: 1rem;
     background-color: $background-color-darker;
     color: $text-color;
+    
+    a{
+        text-decoration: none;
+    }
 
     &__heading {
         margin: 0;
         margin-right: 1rem;
-    }
+    
+        color: white;
+    }   
 
     &__content {
         display: flex;
