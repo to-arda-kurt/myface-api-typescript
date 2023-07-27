@@ -1,3 +1,4 @@
+import "./Interactions.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons"
 
@@ -43,8 +44,8 @@ export function PostInteractions(props:Props) {
 
     return (
         <div className="reaction-buttons">
-            <button className="like-button" onClick={() => likePost()}><FontAwesomeIcon icon={faThumbsUp} /></button>
-            <button className="dislike-button" onClick={() => dislikePost()}><FontAwesomeIcon icon={faThumbsDown} /></button>
+            <button className="reaction-buttons__button" onClick={() => likePost()}><FontAwesomeIcon icon={faThumbsUp} /></button>
+            <button className="reaction-buttons__button" onClick={() => dislikePost()}><FontAwesomeIcon icon={faThumbsDown} /></button>
         </div>
     )
 }
