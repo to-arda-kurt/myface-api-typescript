@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import './CreateUser.scss'
 
 interface CreateUserRequest {
@@ -9,88 +9,58 @@ interface CreateUserRequest {
     profileImageUrl: string;
 }
 
-const validateName = () => {
-
-}
-
-const validateUsername = () => {
-    
-}
-
-const validateEmail = () => {
-    
-}
-
-const validateUrl = () => {
-    
-}
-
 const CreateUser = () => {
 
-    const [user, setUser] = useState({
-        name: '',
-        email: '',
-        username: '',
-        coverImageUrl: '',
-        profileImageUrl: '',
-    })
+    const [name, setName] = useState("")
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [coverImageUrl, setCoverImageUrl] = useState("")
+    const [profileImageUrl, setProfileImageUrl] = useState("")
 
-    const [errorMessage, setErrorMessage] = useState("")
+    const [formSubmitted, setFormSubmitted] = useState(false)
+    const [formSubmittedValid, setFormSubmittedValid] = useState(true)
 
-    const handleChange = (event) => {
-
-        switch (event.target.name) {
-            case("name"):
-                validateName();
-                break;
-            case("username"):
-                validateUsername();
-                break;
-            case("email"):
-                validateEmail();
-                break;
-            case("coverImageUrl"):
-                validateUrl();
-                break;
-            case("profileImageUrl"):
-                validateUrl();
-                break;
-            default:
-                break;
-        }
-
-
-        setUser(prevUser => {
-            return {
-                ...prevUser,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
-
-    const postRequest = async () => {
-
-        const response = await fetch('http://localhost:3001/users/create', {
+    const tryCreateUser = (event: FormEvent) => {
+        event.preventDefault()
+        setFormSubmitted(true)
+        if ((event.target as HTMLFormElement).checkValidity()) {
+            fetch('http://localhost:3001/users/create', {
             method: "POST",
-            mode: "cors",
-            cache: "no-cache",
-            credentials: "same-origin",
             headers: {
-              "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Content-Type": "application/json",
              
             },
-            redirect: "follow", 
-            referrerPolicy: "no-referrer",
-            body: JSON.stringify(user),
-          });
-           console.log(await response.text()) // parses JSON response into native JavaScript objects
+            body: JSON.stringify({
+                name,
+                username,
+                email,
+                coverImageUrl,
+                profileImageUrl,
+            }),
+          }).then((response) => {
+            if (response.ok) {
+                setFormSubmittedValid(true)
+                setName("")
+                setUsername("")
+                setEmail("")
+                setCoverImageUrl("")
+                setProfileImageUrl("")
+            } else {
+                setFormSubmittedValid(false)
+            }
+          }).catch(() => {
+            setFormSubmittedValid(false)
+          })
+        } else {
+            setFormSubmittedValid(false)
         }
-
+    }
 
 
     return (
         <div className="user-form-wrapper">
-            <form className="user-form">
+            <form className="user-form" onSubmit={tryCreateUser} noValidate>
                 <div className="user-form__control">
                     <label htmlFor="name">
                         Name:
@@ -123,12 +93,12 @@ const CreateUser = () => {
                     <label htmlFor="profileImageUrl">
                         Profile Image Url: 
                     </label>
-                    <input className="user-form__control-input" required type="url" name="profileImageUrl" onChange={handleChange} value={user.profileImageUrl}/>
+                    <input required type="url" name="profileImageUrl" onChange={handleChange} value={user.profileImageUrl}/>
                 </div>
 
                 <p className="error-message">{errorMessage}</p>
 
-                <input className="submit-button" type="button" value='Create User' onClick={postRequest}/>
+                <input className="submit-button" type="submit" value='Create User' />
 
 
             </form>

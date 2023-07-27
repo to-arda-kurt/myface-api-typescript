@@ -1,8 +1,8 @@
+
 .user-page-wrapper{
     max-width: 70vw;
     margin: 0 auto;
 }
-
 
 
 .user-posts {
@@ -24,9 +24,7 @@
                 object-fit: cover;
                 overflow: none;
                 border-top-left-radius: 24px;
-                border-top-right-radius: 24px;
-                
-                
+                border-top-right-radius: 24px; 
             }
 
             &-details {
@@ -100,9 +98,7 @@
         &_texts{
             margin-left: 24px;
         }
-
     }
-
-
-
 }
+
+
