@@ -1,4 +1,40 @@
+@use "../../../variables.scss" as *;
+
+.user-form-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .user-form{
     display: flex;
     flex-direction: column;
+    max-width: 900px;
+
+
+    &__control{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        gap: 24px;
+
+        &-input:invalid{
+            border: 3xp solid red;
+        }
+
+    }
+}
+
+.submit-button{
+    height: 48px;
+    max-width: 900px;
+    color: $accent-color;
+    background-color: $background-color-darker;
+    border: none;
+    border-radius: 25px;
+    font-weight: $bold;
+    font-size: 16px;
+    
 }

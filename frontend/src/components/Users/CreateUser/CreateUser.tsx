@@ -9,6 +9,22 @@ interface CreateUserRequest {
     profileImageUrl: string;
 }
 
+const validateName = () => {
+
+}
+
+const validateUsername = () => {
+    
+}
+
+const validateEmail = () => {
+    
+}
+
+const validateUrl = () => {
+    
+}
+
 const CreateUser = () => {
 
     const [user, setUser] = useState({
@@ -19,7 +35,31 @@ const CreateUser = () => {
         profileImageUrl: '',
     })
 
+    const [errorMessage, setErrorMessage] = useState("")
+
     const handleChange = (event) => {
+
+        switch (event.target.name) {
+            case("name"):
+                validateName();
+                break;
+            case("username"):
+                validateUsername();
+                break;
+            case("email"):
+                validateEmail();
+                break;
+            case("coverImageUrl"):
+                validateUrl();
+                break;
+            case("profileImageUrl"):
+                validateUrl();
+                break;
+            default:
+                break;
+        }
+
+
         setUser(prevUser => {
             return {
                 ...prevUser,
@@ -49,38 +89,46 @@ const CreateUser = () => {
 
 
     return (
-        <div>
+        <div className="user-form-wrapper">
             <form className="user-form">
-                <label htmlFor="name">
-                    Name
-                    <input type="text" name="name" onChange={handleChange} value={user.name} />
+                <div className="user-form__control">
+                    <label htmlFor="name">
+                        Name:
+                    </label>
+                    <input className="user-form__control-input" required type="text" name="name" minLength={2} maxLength={20} onChange={handleChange} value={user.name} />
+                </div>
 
-                    {user.name}
-                </label>
-                <label htmlFor="username">
-                    Username
-                    <input type="text" name="username" onChange={handleChange} value={user.username} />
-                    {user.username}
-                </label>
-                <label htmlFor="email">
-                    Email
-                    <input type="email" name="email" onChange={handleChange} value={user.email}/>
-                    {user.email}
-                </label>
+                <div className="user-form__control">
+                    <label htmlFor="username">
+                        Username: 
+                    </label>
+                    <input className="user-form__control-input" required type="text" name="username" minLength={4} maxLength={12} onChange={handleChange} value={user.username} />
+                </div>
 
-                <label htmlFor="coverImageUrl">
-                    Cover Image Url
-                    <input type="url" name="coverImageUrl" onChange={handleChange} value={user.coverImageUrl} />
-                    {user.coverImageUrl}
-                </label>
+                <div className="user-form__control">
+                    <label htmlFor="email">
+                        Email: 
+                    </label>
+                    <input className="user-form__control-input" required type="email" name="email" onChange={handleChange} value={user.email}/>
+                </div>
 
-                <label htmlFor="profileImageUrl">
-                    Profile Image Url
-                    <input type="url" name="profileImageUrl" onChange={handleChange} value={user.profileImageUrl}/>
-                    {user.profileImageUrl}
-                </label>
+                <div className="user-form__control">
+                    <label htmlFor="coverImageUrl">
+                        Cover Image Url: 
+                    </label>
+                    <input className="user-form__control-input" required type="url" name="coverImageUrl" onChange={handleChange} value={user.coverImageUrl} />
+                </div>
 
-                <input type="button" value='Create User' onClick={postRequest}/>
+                <div className="user-form__control">
+                    <label htmlFor="profileImageUrl">
+                        Profile Image Url: 
+                    </label>
+                    <input className="user-form__control-input" required type="url" name="profileImageUrl" onChange={handleChange} value={user.profileImageUrl}/>
+                </div>
+
+                <p className="error-message">{errorMessage}</p>
+
+                <input className="submit-button" type="button" value='Create User' onClick={postRequest}/>
 
 
             </form>

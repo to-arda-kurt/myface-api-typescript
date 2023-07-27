@@ -1,3 +1,6 @@
+import "./Pagination.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faForward, faBackward } from "@fortawesome/free-solid-svg-icons"
 
 interface Props {
     pageNumber: number, 
@@ -15,9 +18,9 @@ const Pagination = (props:Props) => {
     }
 
     return (
-        <div>
-        <p onClick={() => prevPage()}>Previous</p>
-        <p onClick={() => nextPage()}>Next</p>
+        <div className="page-buttons">
+        <button className="page-buttons__button" onClick={() => prevPage()}><FontAwesomeIcon icon={faBackward} /></button>
+        <button className="page-buttons__button" onClick={() => nextPage()}><FontAwesomeIcon icon={faForward} /></button>
       </div>
     )
 }

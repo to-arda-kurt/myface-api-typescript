@@ -1,0 +1,24 @@
+@use "../../variables.scss" as *;
+
+.page-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    &__button{
+        margin: 24px;
+        height: 48px;
+        width: 96px;
+        background-color: $background-color-darker;
+        color: $accent-color;
+        border: none;
+        border-radius: 25px;
+        transition: all .5s ease;
+        
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px $accent-color;
+        }
+    }
+}
