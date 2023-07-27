@@ -13,6 +13,7 @@ function Navbar() {
         <ul className="Navbar__links">
           <li><NavLink to="/posts" className={({isActive}) => `Navbar__link ${isActive ? "Navbar__link--active" : ""}`}>Posts</NavLink></li>
           <li><NavLink to="/users" className={({isActive}) => `Navbar__link ${isActive ? "Navbar__link--active" : ""}`}>Users</NavLink></li>
+          <li><NavLink to="/create-user" className={({isActive}) => `Navbar__link ${isActive ? "Navbar__link--active" : ""}`}>Create User</NavLink></li>
         </ul>
       </div>
     </nav>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-
+import Pagination from '../Pagination/Pagination';
+import './Users.scss'
 
 const Users = () => {
 
@@ -24,25 +25,34 @@ const Users = () => {
     }
 
   const [users, setUsers] = useState<UserModel[]>([])
-
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10)
+
 
   useEffect(() => {
-    fetch(`http://localhost:3001/users?${page}&${pageSize}`).then(response => response.json()).then(data => setUsers(data.results));
+    fetch(`http://localhost:3001/users?page=${page}`).then(response => response.json()).then(data => setUsers(data.results));
 
-  }, [])
+  }, [page])
 
-  console.log(users);
 
   return (
     <>
-
-      <div>
+    <Pagination pageNumber={ page } setPageNumber={ setPage }/>
+      <div className="user-cards">
         { users ?
           users.map(user => (
-            <div>
-              <Link to={`/users/${user.id}`}><h1>{user.username}</h1></Link>
+            <div className='user-card'>
+              <img className='user-card__profile-image' src={user.profileImageUrl} alt="User Profile Image" />
+              <h1 className='user-card__name'>{user.name}</h1>
+              <h3 className='user-card__username'>{user.username}</h3>
+
+              <div className="user-card__post-details">
+                <p className="user-card__post-details--text">{user.posts.length} <br/> <span>Posts</span></p>
+                <p className="user-card__post-details--text">{user.likes.length} <br/> <span>Likes</span></p>
+                <p className="user-card__post-details--text">{user.dislikes.length} <br/><span>Dislikes</span></p>
+              </div>
+
+              <Link to={`/users/${user.id}`}>
+                <button className="user-card__button">View Profile</button></Link>
             
             </div>
           ))
@@ -50,9 +60,6 @@ const Users = () => {
           <p>Loading...</p>
         }
       </div>
-
-
-
     </>
 
   )
