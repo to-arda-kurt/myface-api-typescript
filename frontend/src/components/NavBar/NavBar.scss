@@ -51,6 +51,14 @@
 
     &__toggler {
         display: none;
+        height: 35px;
+        width: 35px;
+        color: $background-color-darker;
+        
+        svg{
+            height: 25px;
+             width: 25px;    
+        }
     }
 }
 
